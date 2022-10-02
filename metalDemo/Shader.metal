@@ -15,11 +15,13 @@ struct Constants {
 struct VertexIn {
     float4 position [[attribute(0)]];   // a convinent cause we need to return a float4 for the rasterizer
     float4 color [[attribute(1)]];
+    float2 textureCoordinates [[attribute(2)]];
 };
 
 struct VertexOut {
     float4 position [[position]]; // this tells the rasterizer which of these data items contains the vertex position value
     float4 color;
+    float2 textureCoordinates;
 };
 
 // a vertex function, return float 4 for the position of the vertex
@@ -28,6 +30,7 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]]) {
     VertexOut vertexOut;
     vertexOut.position = vertexIn.position;
     vertexOut.color = vertexIn.color;
+    vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     return vertexOut;
     
     // output of this function is the input of next stage in the pipeline
@@ -40,10 +43,16 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]]) {
 // every pixel will interpolated for the color
 fragment half4 fragment_shader(VertexOut vertexIn [[stage_in]]) {
     // the data rasterizer has generated per fragment rather than one constant value for all fragments
-    float grayColor = (vertexIn.color.r +
-                       vertexIn.color.g +
-                       vertexIn.color.b) / 3;
-    return half4(grayColor, grayColor, grayColor, 1);
-    
+    return half4(vertexIn.color);
     // red, green, blue, alpha
+}
+
+
+fragment half4 textured_fragment(VertexOut vertexIn [[stage_in]],
+                                 sampler sampler2d [[sampler(0)]],
+                                 texture2d<float> texture [[texture(0)]] // this is the texture in fragment buffer 0
+                                 ) {
+    //extract the color from the current fragments texture coordinates
+    float4 color = texture.sample(sampler2d, vertexIn.textureCoordinates);
+    return half4(color.r, color.g, color.b, 1);
 }

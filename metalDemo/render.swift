@@ -11,6 +11,7 @@ class Renderer: NSObject {
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
     var scene: Scene?
+    var samplerState: MTLSamplerState?
     
     // setup the pipline state and metal vertex buffer
     var pipelineState: MTLRenderPipelineState?
@@ -24,11 +25,18 @@ class Renderer: NSObject {
     var constants = Constants()
     var time: Float = 0     // set up the time for moving
     
-    
     init(device: MTLDevice) {
         self.device = device
         commandQueue = device.makeCommandQueue()!
         super.init()
+        buildSamplerState()
+    }
+    
+    private func buildSamplerState() {
+        let descriptor = MTLSamplerDescriptor()
+        descriptor.minFilter = .linear
+        descriptor.magFilter = .linear
+        samplerState = device.makeSamplerState(descriptor: descriptor)
     }
 
 }
@@ -55,10 +63,10 @@ extension Renderer: MTKViewDelegate {
         
         // pass the time to render function of the scene
         let deltaTime = 1/Float(view.preferredFramesPerSecond)
+        commandEncoder?.setFragmentSamplerState(samplerState, index: 0)
+        
         // recursively called render from game scene to child scene
         scene?.render(commandEncoder: commandEncoder!, deltaTime: deltaTime)
-        
-        
         
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
