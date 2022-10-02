@@ -10,32 +10,42 @@ import MetalKit
 class Renderer: NSObject {
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
+    var scene: Scene?
     
-    // set up vertices in the renderer
+    // create vertices
     var vertices: [Float] = [
-        0, 1, 0,
-        -1, -1, 0,
-        1, -1, 0
+       -1,  1,  0,  // V0
+       -1, -1,  0,  // V1
+       1, -1, 0, // V2
+       1, 1, 0, //V3
     ]
     
+    // create indices to refer the vertices
+    var indices: [UInt16] = [
+        0, 1, 2,
+        2, 3, 0
+    ]
     // setup the pipline state and metal vertex buffer
     var pipelineState: MTLRenderPipelineState?
     var vertexBuffer: MTLBuffer?
+    var indexBuffer: MTLBuffer?
+    
+    //setup the constants
+    struct Constants {
+        var animateBy: Float = 0.0
+    }
+    var constants = Constants()
+    var time: Float = 0     // set up the time for moving
+    
     
     init(device: MTLDevice) {
         self.device = device
         commandQueue = device.makeCommandQueue()!
         super.init()
-        buildModel()
+        
         buildPipelineState()
     }
-    
-    // a function to set up the vertex buffer, called from init
-    private func buildModel() {
-        // create a metal buffer hold the vertices from the vertices array
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Float>.size, options: [])
-    }
-    
+
     
     private func buildPipelineState() {
         let library = device.makeDefaultLibrary()
@@ -62,21 +72,23 @@ extension Renderer: MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
+        // unwrap the gloabl variales
         guard let drawable = view.currentDrawable,
               let pipelineState = pipelineState,
-              let descriptor = view.currentRenderPassDescriptor else {return }
+              let descriptor = view.currentRenderPassDescriptor
+        else {return }
         
         // create command buffer to hold all our commands -> hold the command encoder
         let commandBuffer = commandQueue.makeCommandBuffer()
         // create command encoder stored inside the command buffer
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-        
-        // Render
-        
+
         // send the command buffer to GPU
         commandEncoder?.setRenderPipelineState(pipelineState)
-        commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        
+        let deltaTime = 1/Float(view.preferredFramesPerSecond)
+        scene?.render(commandEncoder: commandEncoder!, deltaTime: deltaTime)
+        
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         // all draw happen after commit
