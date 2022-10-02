@@ -23,6 +23,8 @@
 		06D9D54C28EA2AF400C4CE7F /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D54B28EA2AF400C4CE7F /* Renderable.swift */; };
 		06D9D54F28EA35F700C4CE7F /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D54E28EA35F700C4CE7F /* apple.jpeg */; };
 		06D9D55128EA363D00C4CE7F /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D55028EA363D00C4CE7F /* Texturable.swift */; };
+		06D9D55428EA422B00C4CE7F /* picture-frame-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D55228EA422B00C4CE7F /* picture-frame-mask.png */; };
+		06D9D55528EA422B00C4CE7F /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D55328EA422B00C4CE7F /* picture-frame.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		06D9D54B28EA2AF400C4CE7F /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		06D9D54E28EA35F700C4CE7F /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
 		06D9D55028EA363D00C4CE7F /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		06D9D55228EA422B00C4CE7F /* picture-frame-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame-mask.png"; sourceTree = "<group>"; };
+		06D9D55328EA422B00C4CE7F /* picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		06D9D54D28EA35DC00C4CE7F /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				06D9D55228EA422B00C4CE7F /* picture-frame-mask.png */,
+				06D9D55328EA422B00C4CE7F /* picture-frame.png */,
 				06D9D54E28EA35F700C4CE7F /* apple.jpeg */,
 			);
 			path = Image;
@@ -181,8 +187,10 @@
 			files = (
 				06D9D54F28EA35F700C4CE7F /* apple.jpeg in Resources */,
 				06D9D53428E9EE3600C4CE7F /* LaunchScreen.storyboard in Resources */,
+				06D9D55528EA422B00C4CE7F /* picture-frame.png in Resources */,
 				06D9D53128E9EE3600C4CE7F /* Assets.xcassets in Resources */,
 				06D9D52F28E9EE3400C4CE7F /* Main.storyboard in Resources */,
+				06D9D55428EA422B00C4CE7F /* picture-frame-mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 
 import MetalKit
 class Plane: Node {
+    var maskTexture: MTLTexture?
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     var vertices: [Vertex] = [
@@ -77,6 +78,21 @@ class Plane: Node {
         pipelineState = buildPipelineState(device: device)
     }
     
+    // constructor overload
+    init(device: MTLDevice, imageName: String, maskImageName: String) {
+        super.init()
+        buildBuffers(device: device)
+        if let texture = setTexture(device: device, imageName: imageName) {
+            self.texture = texture
+            fragmentFunctionName = "textured_fragment"
+        }
+        if let maskTexture = setTexture(device: device, imageName: maskImageName) {
+            self.maskTexture = maskTexture
+            fragmentFunctionName = "textured_mask_fragment"
+        }
+        pipelineState = buildPipelineState(device: device)
+    }
+    
     // build buffer in GPU for this scene
     private func buildBuffers(device: MTLDevice) {
         // create a metal buffer hold the vertices from the vertices array
@@ -111,6 +127,7 @@ class Plane: Node {
                                       index: 1)
         // send texture
         commandEncoder.setFragmentTexture(texture, index: 0)
+        commandEncoder.setFragmentTexture(maskTexture, index: 1)
         //send the index, this functoin have to be after the constant one
         commandEncoder.drawIndexedPrimitives(type: .triangle,
                                              indexCount: indices.count,
