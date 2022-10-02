@@ -13,6 +13,8 @@
 		06D9D52F28E9EE3400C4CE7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D52D28E9EE3400C4CE7F /* Main.storyboard */; };
 		06D9D53128E9EE3600C4CE7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D53028E9EE3600C4CE7F /* Assets.xcassets */; };
 		06D9D53428E9EE3600C4CE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D53228E9EE3600C4CE7F /* LaunchScreen.storyboard */; };
+		06D9D53C28E9F26900C4CE7F /* render.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D53B28E9F26900C4CE7F /* render.swift */; };
+		06D9D53E28E9FB8E00C4CE7F /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D53D28E9FB8E00C4CE7F /* Shader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		06D9D53028E9EE3600C4CE7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06D9D53328E9EE3600C4CE7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06D9D53528E9EE3600C4CE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06D9D53B28E9F26900C4CE7F /* render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = render.swift; sourceTree = "<group>"; };
+		06D9D53D28E9FB8E00C4CE7F /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				06D9D53028E9EE3600C4CE7F /* Assets.xcassets */,
 				06D9D53228E9EE3600C4CE7F /* LaunchScreen.storyboard */,
 				06D9D53528E9EE3600C4CE7F /* Info.plist */,
+				06D9D53B28E9F26900C4CE7F /* render.swift */,
+				06D9D53D28E9FB8E00C4CE7F /* Shader.metal */,
 			);
 			path = metalDemo;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 				06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */,
 				06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */,
 				06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */,
+				06D9D53E28E9FB8E00C4CE7F /* Shader.metal in Sources */,
+				06D9D53C28E9F26900C4CE7F /* render.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

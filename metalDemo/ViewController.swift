@@ -6,14 +6,32 @@
 //
 
 import UIKit
+import MetalKit
+
+enum Colors {
+    static let wenderlichGreen = MTLClearColor(red: 0.0, green: 0.4, blue: 0.21, alpha: 1.0)
+}
 
 class ViewController: UIViewController {
-
+        
+    var metalView: MTKView {
+        return view as! MTKView
+    }
+    // There should be 1 device and 1 command queue per application
+    // representation of the GPU
+    var renderer: Renderer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        metalView.device = MTLCreateSystemDefaultDevice()
+        guard let device = metalView.device else {
+          fatalError("Device not created. Run on a physical device")
+        }
+        metalView.clearColor =  Colors.wenderlichGreen
+        renderer = Renderer(device: device)
+        metalView.delegate = renderer
+        
     }
 
 
 }
-
