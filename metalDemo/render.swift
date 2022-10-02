@@ -71,6 +71,8 @@ extension Renderer: MTKViewDelegate {
         
     }
     
+    
+    // called every frame
     func draw(in view: MTKView) {
         // unwrap the gloabl variales
         guard let drawable = view.currentDrawable,
@@ -82,12 +84,15 @@ extension Renderer: MTKViewDelegate {
         let commandBuffer = commandQueue.makeCommandBuffer()
         // create command encoder stored inside the command buffer
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-
-        // send the command buffer to GPU
+        // set up the pipelines state -> created by pipeline descriptor
         commandEncoder?.setRenderPipelineState(pipelineState)
         
+        // pass the time to render function of the scene
         let deltaTime = 1/Float(view.preferredFramesPerSecond)
+        // recursively called render from game scene to child scene
         scene?.render(commandEncoder: commandEncoder!, deltaTime: deltaTime)
+        
+        
         
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)

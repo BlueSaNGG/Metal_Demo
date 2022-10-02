@@ -23,6 +23,7 @@ class Plane: Node {
     }
     var constants = Constants()
     
+    // build buffer in GPU for this scene
     private func buildBuffers(device: MTLDevice) {
         // create a metal buffer hold the vertices from the vertices array
         vertexBuffer = device.makeBuffer(bytes: vertices,
@@ -33,6 +34,7 @@ class Plane: Node {
                                         options: [])
     }
     
+    // different node have unique render function
     override func render(commandEncoder: MTLRenderCommandEncoder,
                          deltaTime: Float) {
         super.render(commandEncoder: commandEncoder,

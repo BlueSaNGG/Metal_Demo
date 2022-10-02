@@ -68,16 +68,16 @@
 		06D9D52628E9EE3400C4CE7F /* metalDemo */ = {
 			isa = PBXGroup;
 			children = (
+				06D9D52B28E9EE3400C4CE7F /* ViewController.swift */,
+				06D9D53B28E9F26900C4CE7F /* render.swift */,
 				06D9D54828EA176900C4CE7F /* Node */,
 				06D9D54728EA176300C4CE7F /* Scene */,
 				06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */,
 				06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */,
-				06D9D52B28E9EE3400C4CE7F /* ViewController.swift */,
 				06D9D52D28E9EE3400C4CE7F /* Main.storyboard */,
 				06D9D53028E9EE3600C4CE7F /* Assets.xcassets */,
 				06D9D53228E9EE3600C4CE7F /* LaunchScreen.storyboard */,
 				06D9D53528E9EE3600C4CE7F /* Info.plist */,
-				06D9D53B28E9F26900C4CE7F /* render.swift */,
 				06D9D53D28E9FB8E00C4CE7F /* Shader.metal */,
 			);
 			path = metalDemo;
