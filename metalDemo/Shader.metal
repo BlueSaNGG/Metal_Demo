@@ -40,7 +40,10 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]]) {
 // every pixel will interpolated for the color
 fragment half4 fragment_shader(VertexOut vertexIn [[stage_in]]) {
     // the data rasterizer has generated per fragment rather than one constant value for all fragments
-    return half4(vertexIn.color);
+    float grayColor = (vertexIn.color.r +
+                       vertexIn.color.g +
+                       vertexIn.color.b) / 3;
+    return half4(grayColor, grayColor, grayColor, 1);
     
     // red, green, blue, alpha
 }

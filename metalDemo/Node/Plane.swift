@@ -26,6 +26,33 @@ class Plane: Node {
     }
     var constants = Constants()
     
+    // renderable Protocol
+    var pipelineState: MTLRenderPipelineState!
+    var fragmentFunctionName: String = "fragment_shader"
+    var vertexFunctionName: String = "vertex_shader"
+    var vertexDescriptor: MTLVertexDescriptor {
+      let vertexDescriptor = MTLVertexDescriptor()
+      
+      vertexDescriptor.attributes[0].format = .float3
+      vertexDescriptor.attributes[0].offset = 0
+      vertexDescriptor.attributes[0].bufferIndex = 0
+      
+      vertexDescriptor.attributes[1].format = .float4
+      vertexDescriptor.attributes[1].offset = MemoryLayout<simd_float3>.stride
+      vertexDescriptor.attributes[1].bufferIndex = 0
+      
+      vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+      
+      return vertexDescriptor
+    }
+    
+    init(device: MTLDevice) {
+        super.init()
+        buildBuffers(device: device)
+        // build pipeline at the begining
+        pipelineState = buildPipelineState(device: device)
+    }
+    
     // build buffer in GPU for this scene
     private func buildBuffers(device: MTLDevice) {
         // create a metal buffer hold the vertices from the vertices array
@@ -43,16 +70,20 @@ class Plane: Node {
         super.render(commandEncoder: commandEncoder,
                      deltaTime: deltaTime)
         guard let indexBuffer = indexBuffer else { return }
+        
         //animation function
         time += deltaTime
         let animateBy = abs(sin(time)/2 + 0.5)
         constants.animateBy = animateBy
+        
+        
+        
+        commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         //send the constant, set the buffer index to be 1 in this example
         commandEncoder.setVertexBytes(&constants,
                                       length: MemoryLayout<Constants>.stride,
                                       index: 1)
-        
         //send the index, this functoin have to be after the constant one
         commandEncoder.drawIndexedPrimitives(type: .triangle,
                                              indexCount: indices.count,
@@ -60,9 +91,9 @@ class Plane: Node {
                                              indexBuffer: indexBuffer,
                                              indexBufferOffset: 0)
     }
-    
-    init(device: MTLDevice) {
-        super.init()
-        buildBuffers(device: device)
-    }
 }
+
+
+extension Plane: Renderable {
+}
+
