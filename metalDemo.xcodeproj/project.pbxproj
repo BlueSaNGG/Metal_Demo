@@ -19,6 +19,7 @@
 		06D9D54228EA154700C4CE7F /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D54128EA154700C4CE7F /* Plane.swift */; };
 		06D9D54428EA16C000C4CE7F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D54328EA16C000C4CE7F /* Scene.swift */; };
 		06D9D54628EA171300C4CE7F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D54528EA171300C4CE7F /* GameScene.swift */; };
+		06D9D54A28EA242C00C4CE7F /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D54928EA242C00C4CE7F /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		06D9D54128EA154700C4CE7F /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		06D9D54328EA16C000C4CE7F /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		06D9D54528EA171300C4CE7F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		06D9D54928EA242C00C4CE7F /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				06D9D52B28E9EE3400C4CE7F /* ViewController.swift */,
+				06D9D54928EA242C00C4CE7F /* Types.swift */,
 				06D9D53B28E9F26900C4CE7F /* render.swift */,
 				06D9D54828EA176900C4CE7F /* Node */,
 				06D9D54728EA176300C4CE7F /* Scene */,
@@ -175,6 +178,7 @@
 				06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */,
 				06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */,
 				06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */,
+				06D9D54A28EA242C00C4CE7F /* Types.swift in Sources */,
 				06D9D54628EA171300C4CE7F /* GameScene.swift in Sources */,
 				06D9D54028EA14C600C4CE7F /* Node.swift in Sources */,
 				06D9D54428EA16C000C4CE7F /* Scene.swift in Sources */,

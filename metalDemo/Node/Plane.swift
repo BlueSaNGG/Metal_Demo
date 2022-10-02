@@ -9,14 +9,17 @@ import MetalKit
 class Plane: Node {
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
-    var vertices: [Float] = [
-        -1,  1, 0,
-         -1, -1, 0,
-         1, -1, 0,
-         1, 1, 0]
+    var vertices: [Vertex] = [
+        Vertex(position: simd_float3(-1, 1, 0), color: simd_float4(1, 0, 0, 1)),
+        Vertex(position: simd_float3(-1, -1, 0), color: simd_float4(0, 1, 0, 1)),
+        Vertex(position: simd_float3(1, -1, 0), color: simd_float4(0, 0, 1, 1)),
+        Vertex(position: simd_float3(1, 1, 0), color: simd_float4(1, 0, 1, 1)),
+    ]
+    
     var indices: [UInt16] = [
         0, 1, 2,
-        0, 2, 3 ]
+        0, 2, 3
+    ]
     var time: Float = 0
     struct Constants {
         var animateBy: Float = 0
@@ -27,7 +30,7 @@ class Plane: Node {
     private func buildBuffers(device: MTLDevice) {
         // create a metal buffer hold the vertices from the vertices array
         vertexBuffer = device.makeBuffer(bytes: vertices,
-                                         length: vertices.count * MemoryLayout<Float>.size,
+                                         length: vertices.count * MemoryLayout<Vertex>.stride,
                                          options: [])
         indexBuffer = device.makeBuffer(bytes: indices,
                                         length: indices.count * MemoryLayout<UInt16>.size,

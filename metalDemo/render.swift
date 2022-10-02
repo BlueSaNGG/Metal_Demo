@@ -12,19 +12,6 @@ class Renderer: NSObject {
     let commandQueue: MTLCommandQueue
     var scene: Scene?
     
-    // create vertices
-    var vertices: [Float] = [
-       -1,  1,  0,  // V0
-       -1, -1,  0,  // V1
-       1, -1, 0, // V2
-       1, 1, 0, //V3
-    ]
-    
-    // create indices to refer the vertices
-    var indices: [UInt16] = [
-        0, 1, 2,
-        2, 3, 0
-    ]
     // setup the pipline state and metal vertex buffer
     var pipelineState: MTLRenderPipelineState?
     var vertexBuffer: MTLBuffer?
@@ -47,6 +34,7 @@ class Renderer: NSObject {
     }
 
     
+    // different scene may have different pipeline state
     private func buildPipelineState() {
         let library = device.makeDefaultLibrary()
         let vertexFunction = library?.makeFunction(name: "vertex_shader")
@@ -56,6 +44,22 @@ class Renderer: NSObject {
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        
+        let vertexDescriptor = MTLVertexDescriptor()
+        // vertex attribute
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].offset = 0
+        vertexDescriptor.attributes[0].bufferIndex = 0
+        // color attribute
+        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].offset = MemoryLayout<simd_float3>.stride
+        vertexDescriptor.attributes[1].bufferIndex = 0
+        
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+        
+        pipelineDescriptor.vertexDescriptor = vertexDescriptor
+        
+        
         
         do {
             pipelineState = try device.makeRenderPipelineState(descriptor:
