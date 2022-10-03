@@ -25,6 +25,7 @@
 		06D9D55128EA363D00C4CE7F /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D55028EA363D00C4CE7F /* Texturable.swift */; };
 		06D9D55428EA422B00C4CE7F /* picture-frame-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D55228EA422B00C4CE7F /* picture-frame-mask.png */; };
 		06D9D55528EA422B00C4CE7F /* picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D9D55328EA422B00C4CE7F /* picture-frame.png */; };
+		06D9D55728EB457000C4CE7F /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D55628EB457000C4CE7F /* MatrixMath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		06D9D55028EA363D00C4CE7F /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		06D9D55228EA422B00C4CE7F /* picture-frame-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame-mask.png"; sourceTree = "<group>"; };
 		06D9D55328EA422B00C4CE7F /* picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-frame.png"; sourceTree = "<group>"; };
+		06D9D55628EB457000C4CE7F /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				06D9D54828EA176900C4CE7F /* Node */,
 				06D9D54728EA176300C4CE7F /* Scene */,
 				06D9D52B28E9EE3400C4CE7F /* ViewController.swift */,
+				06D9D55628EB457000C4CE7F /* MatrixMath.swift */,
 				06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */,
 				06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */,
 				06D9D52D28E9EE3400C4CE7F /* Main.storyboard */,
@@ -213,6 +216,7 @@
 				06D9D53E28E9FB8E00C4CE7F /* Shader.metal in Sources */,
 				06D9D53C28E9F26900C4CE7F /* render.swift in Sources */,
 				06D9D54228EA154700C4CE7F /* Plane.swift in Sources */,
+				06D9D55728EB457000C4CE7F /* MatrixMath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

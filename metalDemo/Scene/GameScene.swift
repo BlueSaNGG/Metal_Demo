@@ -12,10 +12,8 @@ class GameScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
 //        quad = Plane(device: device)
 //        quad = Plane(device: device, imageName: "apple.jpeg")
-        quad = Plane(device: device, imageName: "apple.jpeg", maskImageName: "picture-frame-mask.png")
-        let pictureFrame = Plane(device: device, imageName: "picture-frame.png")
+        quad = Plane(device: device, imageName: "apple.jpeg")
         super.init(device: device, size: size)
         add(childNode: quad)
-        add(childNode: pictureFrame)
     }
 }

@@ -8,8 +8,8 @@
 #include <metal_stdlib>
 using namespace metal;
 
-struct Constants {
-    float animateBy;
+struct ModelConstants {
+    float4x4 modelViewMatrix;
 };
 
 struct VertexIn {
@@ -25,10 +25,13 @@ struct VertexOut {
 };
 
 // a vertex function, return float 4 for the position of the vertex
-vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]]) {
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]],
+                               constant ModelConstants &modelConstants [[buffer(1)]]){
     // we could change the position of the vertex
     VertexOut vertexOut;
-    vertexOut.position = vertexIn.position;
+    // multiply vertices by the scale matrix
+    vertexOut.position = modelConstants.modelViewMatrix  * vertexIn.position;
+    
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     return vertexOut;

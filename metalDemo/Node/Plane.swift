@@ -11,10 +11,10 @@ class Plane: Node {
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     var vertices: [Vertex] = [
-        Vertex(position: simd_float3(-1, 1, 0), color: simd_float4(1, 0, 0, 1), texture: simd_float2(0, 0)),
-        Vertex(position: simd_float3(-1, -1, 0), color: simd_float4(0, 1, 0, 1), texture: simd_float2(0, 1)),
-        Vertex(position: simd_float3(1, -1, 0), color: simd_float4(0, 0, 1, 1), texture: simd_float2(1, 1)),
-        Vertex(position: simd_float3(1, 1, 0), color: simd_float4(1, 0, 1, 1), texture: simd_float2(1, 0)),
+        Vertex(position: simd_float3(-1, 1, 0), color: simd_float4(1, 0, 0, 1), texture: simd_float2(0, 1)),
+        Vertex(position: simd_float3(-1, -1, 0), color: simd_float4(0, 1, 0, 1), texture: simd_float2(0, 0)),
+        Vertex(position: simd_float3(1, -1, 0), color: simd_float4(0, 0, 1, 1), texture: simd_float2(1, 0)),
+        Vertex(position: simd_float3(1, 1, 0), color: simd_float4(1, 0, 1, 1), texture: simd_float2(1, 1)),
     ]
     
     var indices: [UInt16] = [
@@ -22,10 +22,8 @@ class Plane: Node {
         0, 2, 3
     ]
     var time: Float = 0
-    struct Constants {
-        var animateBy: Float = 0
-    }
-    var constants = Constants()
+    
+    var modelConstants = ModelConstants()
     
     // renderable Protocol
     var pipelineState: MTLRenderPipelineState!
@@ -115,15 +113,20 @@ class Plane: Node {
         //animation function
         time += deltaTime
         let animateBy = abs(sin(time)/2 + 0.5)
-        constants.animateBy = animateBy
-        
-        
+        let rotationMatrix = matrix_float4x4(rotationAngle: animateBy, x: 0, y: 0, z: 1)
+
+        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
+        let modelViewMatrix = matrix_multiply(rotationMatrix, viewMatrix)
+        let aspect = Float(750.0/1334.0)
+        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspect, nearZ: 0.1, farZ: 100)
+        modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
+
         
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         //send the constant, set the buffer index to be 1 in this example
-        commandEncoder.setVertexBytes(&constants,
-                                      length: MemoryLayout<Constants>.stride,
+        commandEncoder.setVertexBytes(&modelConstants,
+                                      length: MemoryLayout<ModelConstants>.stride,
                                       index: 1)
         // send texture
         commandEncoder.setFragmentTexture(texture, index: 0)

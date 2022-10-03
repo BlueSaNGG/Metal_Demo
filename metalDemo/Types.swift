@@ -12,3 +12,7 @@ struct Vertex {
     var texture: simd_float2
 }
 
+struct ModelConstants {
+    // send to the GPU to transform all the vertices of the model into camera space
+    var modelViewMatrix = matrix_identity_float4x4
+}
