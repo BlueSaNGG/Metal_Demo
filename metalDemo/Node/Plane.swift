@@ -102,21 +102,16 @@ class Plane: Node {
                                         options: [])
     }
     
-    // different node have unique render function
-    // this is called in draw
-    override func render(commandEncoder: MTLRenderCommandEncoder,
-                         deltaTime: Float) {
-        super.render(commandEncoder: commandEncoder,
-                     deltaTime: deltaTime)
+    
+}
+
+
+extension Plane: Renderable {
+    // unique render function
+    // called in render if the object is renderable
+    func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer else { return }
         
-        //animation function
-        time += deltaTime
-        let animateBy = abs(sin(time)/2 + 0.5)
-        let rotationMatrix = matrix_float4x4(rotationAngle: animateBy, x: 0, y: 0, z: 1)
-
-        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4)
-        let modelViewMatrix = matrix_multiply(rotationMatrix, viewMatrix)
         let aspect = Float(750.0/1334.0)
         let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspect, nearZ: 0.1, farZ: 100)
         modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
@@ -138,10 +133,7 @@ class Plane: Node {
                                              indexBuffer: indexBuffer,
                                              indexBufferOffset: 0)
     }
-}
-
-
-extension Plane: Renderable {
+    
 
 }
 
