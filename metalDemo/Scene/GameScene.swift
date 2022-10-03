@@ -23,6 +23,12 @@ class GameScene: Scene {
         quad.scale = simd_float3(repeating: 3)
         cube.scale = simd_float3(repeating: 0.5)
         
+        // set the camera position and rotation
+        camera.position.y = -1
+        camera.position.x = 1
+        camera.position.z = -6
+        camera.rotation.x = radians(fromDegrees: -45)
+        camera.rotation.y = radians(fromDegrees: -45)
         
     }
     

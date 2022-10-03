@@ -111,11 +111,8 @@ extension Primitive: Renderable {
     // called in render if the object is renderable
     func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let indexBuffer = indexBuffer else { return }
-        
-        let aspect = Float(750.0/1334.0)
-        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspect, nearZ: 0.1, farZ: 100)
-        modelConstants.modelViewMatrix = matrix_multiply(projectionMatrix, modelViewMatrix)
-
+        // only do model view matrix assign for this object
+        modelConstants.modelViewMatrix = modelViewMatrix
         
         commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)

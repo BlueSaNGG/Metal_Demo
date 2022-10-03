@@ -24,13 +24,19 @@ struct VertexOut {
     float2 textureCoordinates;
 };
 
+struct SceneConstants {
+  float4x4 projectionMatrix;
+};
+
 // a vertex function, return float 4 for the position of the vertex
-vertex VertexOut vertex_shader(const VertexIn vertexIn [[stage_in]],
-                               constant ModelConstants &modelConstants [[buffer(1)]]){
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                               constant ModelConstants &modelConstants [[ buffer(1) ]],
+                               constant SceneConstants &sceneConstants [[ buffer(2) ]]) {
     // we could change the position of the vertex
     VertexOut vertexOut;
-    // multiply vertices by the scale matrix
-    vertexOut.position = modelConstants.modelViewMatrix  * vertexIn.position;
+    // multiply vertices by the scale matrix and projection vertex
+    float4x4 matrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
+    vertexOut.position = matrix * vertexIn.position;
     
     vertexOut.color = vertexIn.color;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;

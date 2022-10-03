@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0628575228EB6E940024196A /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628575128EB6E940024196A /* Primitive.swift */; };
 		0628575428EB71C50024196A /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628575328EB71C50024196A /* Cube.swift */; };
+		0628575628EB791B0024196A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628575528EB791B0024196A /* Camera.swift */; };
 		06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */; };
 		06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */; };
 		06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52B28E9EE3400C4CE7F /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		0628575128EB6E940024196A /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		0628575328EB71C50024196A /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		0628575528EB791B0024196A /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		06D9D52428E9EE3400C4CE7F /* metalDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metalDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				0628575328EB71C50024196A /* Cube.swift */,
 				06D9D54128EA154700C4CE7F /* Plane.swift */,
 				0628575128EB6E940024196A /* Primitive.swift */,
+				0628575528EB791B0024196A /* Camera.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0628575628EB791B0024196A /* Camera.swift in Sources */,
 				06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */,
 				06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */,
 				06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */,

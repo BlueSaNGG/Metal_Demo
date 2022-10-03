@@ -16,3 +16,8 @@ struct ModelConstants {
     // send to the GPU to transform all the vertices of the model into camera space
     var modelViewMatrix = matrix_identity_float4x4
 }
+
+// inorder to pass this to the vertex function
+struct SceneConstants {
+  var projectionMatrix = matrix_identity_float4x4
+}
