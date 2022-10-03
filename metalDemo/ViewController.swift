@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         guard let device = metalView.device else {
           fatalError("Device not created. Run on a physical device")
         }
+        metalView.depthStencilPixelFormat = .depth32Float
         metalView.clearColor =  Colors.wenderlichGreen
         renderer = Renderer(device: device)
         metalView.delegate = renderer

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0628575228EB6E940024196A /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628575128EB6E940024196A /* Primitive.swift */; };
+		0628575428EB71C50024196A /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0628575328EB71C50024196A /* Cube.swift */; };
 		06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */; };
 		06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */; };
 		06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9D52B28E9EE3400C4CE7F /* ViewController.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0628575128EB6E940024196A /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
+		0628575328EB71C50024196A /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		06D9D52428E9EE3400C4CE7F /* metalDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metalDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D9D52728E9EE3400C4CE7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06D9D52928E9EE3400C4CE7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +119,9 @@
 				06D9D54B28EA2AF400C4CE7F /* Renderable.swift */,
 				06D9D55028EA363D00C4CE7F /* Texturable.swift */,
 				06D9D53F28EA14C600C4CE7F /* Node.swift */,
+				0628575328EB71C50024196A /* Cube.swift */,
 				06D9D54128EA154700C4CE7F /* Plane.swift */,
+				0628575128EB6E940024196A /* Primitive.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 				06D9D52C28E9EE3400C4CE7F /* ViewController.swift in Sources */,
 				06D9D52828E9EE3400C4CE7F /* AppDelegate.swift in Sources */,
 				06D9D52A28E9EE3400C4CE7F /* SceneDelegate.swift in Sources */,
+				0628575228EB6E940024196A /* Primitive.swift in Sources */,
 				06D9D54A28EA242C00C4CE7F /* Types.swift in Sources */,
 				06D9D54628EA171300C4CE7F /* GameScene.swift in Sources */,
 				06D9D54C28EA2AF400C4CE7F /* Renderable.swift in Sources */,
@@ -214,6 +221,7 @@
 				06D9D55128EA363D00C4CE7F /* Texturable.swift in Sources */,
 				06D9D54428EA16C000C4CE7F /* Scene.swift in Sources */,
 				06D9D53E28E9FB8E00C4CE7F /* Shader.metal in Sources */,
+				0628575428EB71C50024196A /* Cube.swift in Sources */,
 				06D9D53C28E9F26900C4CE7F /* render.swift in Sources */,
 				06D9D54228EA154700C4CE7F /* Plane.swift in Sources */,
 				06D9D55728EB457000C4CE7F /* MatrixMath.swift in Sources */,

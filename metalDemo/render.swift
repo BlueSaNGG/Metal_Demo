@@ -12,6 +12,7 @@ class Renderer: NSObject {
     let commandQueue: MTLCommandQueue
     var scene: Scene?
     var samplerState: MTLSamplerState?
+    var depthStencilState: MTLDepthStencilState?
     
     // setup the pipline state and metal vertex buffer
     var pipelineState: MTLRenderPipelineState?
@@ -30,6 +31,7 @@ class Renderer: NSObject {
         commandQueue = device.makeCommandQueue()!
         super.init()
         buildSamplerState()
+        buildDepthStencilState()
     }
     
     private func buildSamplerState() {
@@ -39,6 +41,12 @@ class Renderer: NSObject {
         samplerState = device.makeSamplerState(descriptor: descriptor)
     }
 
+    private func buildDepthStencilState() {
+        let depthStencilDescriptor = MTLDepthStencilDescriptor()
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilDescriptor.isDepthWriteEnabled = true
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
+    }
 }
 
 extension Renderer: MTKViewDelegate {
@@ -64,7 +72,7 @@ extension Renderer: MTKViewDelegate {
         // pass the time to render function of the scene
         let deltaTime = 1/Float(view.preferredFramesPerSecond)
         commandEncoder?.setFragmentSamplerState(samplerState, index: 0)
-        
+        commandEncoder?.setDepthStencilState(depthStencilState)
         // recursively called render from game scene to child scene
         scene?.render(commandEncoder: commandEncoder!, deltaTime: deltaTime)
         

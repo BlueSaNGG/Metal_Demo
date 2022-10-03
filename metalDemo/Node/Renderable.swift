@@ -26,6 +26,7 @@ extension Renderable {
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
         
